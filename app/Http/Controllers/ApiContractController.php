@@ -46,4 +46,25 @@ class ApiContractController extends Controller
 
         
     }
+    
+    public function contractforuser($id)
+    {
+
+        $user = User::find($id);
+        if ($user == null)
+            return response()->json(['status' => false, 'message' => 'no user found']);
+
+        if ($user->role == 'freelancer') {
+            $contracts = contract::with('freelancer', 'job', 'user')->where('freelancer_id', $id)->get();
+            if (count($contracts) == 0)
+                return response()->json(['status' => false, 'message' => 'no contract found']);
+
+            return response()->json($contracts);
+        }
+        $contracts = contract::with('freelancer', 'job', 'user')->where('user_id', $id)->get();
+        if (count($contracts) == 0)
+            return response()->json(['status' => false, 'message' => 'no contract found']);
+
+        return response()->json($contracts);
+    }
 }
