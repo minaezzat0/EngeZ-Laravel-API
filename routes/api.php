@@ -22,51 +22,32 @@ use Illuminate\Support\Facades\Route;
           Route::delete('jobs/{id}','ApiJobController@delete');
           Route::post('/contacts','ApiContactController@store');
           Route::delete('/contacts/{id}','ApiContactController@delete');
-          
           Route::post('/contracts','ApiContractController@store');
-
-
-    
-          
       });
 
+
+          Route::get('/jobuser/{id}','ApiJobController@getjobsforuser');
+
    Route::middleware('is_api_admin')->group(function(){
-        
          Route::get('/users','ApiUserController@index');
          Route::get('/users/{id}','ApiUserController@show');
          Route::post('/users/{id}','ApiUserController@edite');
          Route::delete('/users/{id}','ApiUserController@delete');
-
          Route::get('/dashboard','ApiUserController@dashboard');
-
          Route::delete('/categories/{id}','ApiCategoryController@delete');
          Route::post('/categories/{id}','ApiCategoryController@edit');
- 
-        
-         Route::get('offers','ApiOfferController@index');
-      
+         Route::get('offers','ApiOfferController@index'); 
          Route::get('/contacts','ApiContactController@index');
-
          Route::get('/admins','ApiUserController@admins');
          Route::get('/freelancers','ApiUserController@freelancers');
          Route::get('/ordinaryusers','ApiUserController@ordinaryusers');
-
          Route::get('/latestfivejobs','ApiJobController@latestfivejobs');
-
          Route::get('/contracts','ApiContractController@index');
-
-         
-
   });
 
   Route::middleware('is_api_freelancer')->group(function(){
-
-    
     Route::post('offers','ApiOfferController@store');
     Route::delete('offers/{id}','ApiOfferController@delete');
-
-
-
   });
 
   
