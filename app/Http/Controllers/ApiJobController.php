@@ -196,6 +196,13 @@ class ApiJobController extends Controller
             return response()->json(['status'=>false ,'message'=>'no user yet']);
             return response()->json(['status'=>true ,'message'=>'successed','jobs'=>$jobs]);
           }
+        
+          public function getjobsforuser($id)
+          {
+            $user = User::find($id);
+            $jobs = Job::with('offers')->where('user_id', $user->id)->get();
+            return response()->json($jobs);
+          }
 
 
 }
