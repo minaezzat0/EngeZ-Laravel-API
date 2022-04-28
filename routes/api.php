@@ -28,6 +28,7 @@ use Illuminate\Support\Facades\Route;
           Route::delete('/owncontacts/{id}', 'ApiContactController@owndelete');
           Route::get('contractsforuser/{id}','ApiContractController@contractforuser');
           Route::get('/jobuser/{id}','ApiJobController@getjobsforuser');
+          Route::get('/contracts/{id}','ApiContractController@show');
 
    Route::middleware('is_api_admin')->group(function(){
          Route::get('/users','ApiUserController@index');
