@@ -23,7 +23,7 @@ class ApiContactController extends Controller
         $validator=\Validator::make($request->all(),
         [
             'message'=>'required|max:191|min:3',
-            'subject'=>'required|max:1000|min:5',
+            'subject'=>'required|max:1000|min:3',
         ]);
         if ($validator->fails()) {
           return response()->json(['status'=>false,'message'=>'wrong data error','errors'=>$validator->errors()]);
