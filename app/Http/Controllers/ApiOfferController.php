@@ -13,7 +13,7 @@ class ApiOfferController extends Controller
     
     public function index()
     {
-        $offers=Offer::with('job')->get();
+        $offers=Offer::with('job,user')->get();
         return response()->json(['status'=>true,'message'=>'done','offers'=>$offers]);
         
     }
