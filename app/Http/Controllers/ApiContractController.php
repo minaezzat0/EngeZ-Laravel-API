@@ -46,6 +46,14 @@ class ApiContractController extends Controller
 
         
     }
+    public function show($id){
+
+        $contract=contract::with('freelancer','job','user')->find($id);
+        if($contract==null)
+        return response()->json(['status'=>false,'message'=>'no contract found']);
+
+        return response()->json($contract);
+    }
     
     public function contractforuser($id)
     {
