@@ -17,4 +17,9 @@ class Job extends Model
     {
         return $this->belongsTo('App\User');
     }
+     public function freelancers()
+    {
+        return $this->hasMany('App\User')->where('role','freelancer');
+
+    }
 }
