@@ -181,7 +181,7 @@ class ApiJobController extends Controller
             if($user==null)
             return response()->json(['status'=>false,'message'=>'you dont have prevliouseee']);
               
-        $jobs=Job::with('offers')->where('user_id',$user->id)->get();
+        $jobs=Job::with('offers,category')->where('user_id',$user->id)->get();
         if($jobs==null)
         return response()->json(['status'=>false ,'message'=>'no jobs for you']);
 
