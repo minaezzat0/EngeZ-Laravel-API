@@ -95,4 +95,31 @@ class ApiOfferController extends Controller
         $offers = Offer::with('job')->where('job_id', $job->id)->get();
         return response()->json($offers);
     }
+    public function verifyoffer($id){
+
+        $offer=Offer::find($id);
+        $job=Job::find($offer->job_id);
+
+        $offers=$job->offers;
+        foreach($offers as $offer)
+        {
+            if($offer->id==$id)
+            {
+                $offer->status='accepted';
+                $offer->save();
+            continue;
+            }
+            $offer->status='rejected';
+            $offer->save();
+        }
+        $offer=Offer::find($id);
+        $job=Job::find($offer->job_id);
+        $job->status=1;
+        $job->save();
+        $details = "Your offer has been Accepted";
+        \Mail::to($job->user->email)->send(new offerAccept($details));
+        return response()->json(['status'=>true,'mesaage'=>'successed']);
+
+
+    }
 }
