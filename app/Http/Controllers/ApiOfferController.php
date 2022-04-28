@@ -14,7 +14,7 @@ class ApiOfferController extends Controller
     public function index()
     {
         $offers=Offer::with('job,user')->get();
-        return response()->json(['status'=>true,'message'=>'done','offers'=>$offers]);
+        return response()->json($offers);
         
     }
     public function store(Request $request)
@@ -53,7 +53,7 @@ class ApiOfferController extends Controller
              \Mail::to($job->user->email)->send(new welcomeMail($details));
 
 
-            return response()->json(['status'=>true,'message'=>'offer send and store successfuly ','offer'=>$offer]);
+            return response()->json($offer);
 
     }
     public function delete($id)
