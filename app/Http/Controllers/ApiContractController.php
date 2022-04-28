@@ -21,7 +21,7 @@ class ApiContractController extends Controller
         $validator=\Validator::make($request->all(),
         [
             'title'=>'required|max:30|min:3',
-            'desc'=>'required|max:1000|min:5',
+            'desc'=>'required|max:500|min:5',
              'price'=>'required',
             'job_id'=>'required|exists:jobs,id',
             'freelancer_id'=>'required|exists:users,id',
