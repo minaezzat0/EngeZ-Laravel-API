@@ -12,7 +12,7 @@ class ApiJobController extends Controller
     function index()
     {
 
-        $jobs=Job::where('record_deleted',0)->get();
+        $jobs=Job::with('user','category')->where('record_deleted',0)->get();
         if($jobs==null)
         return response()->json(['status'=>false ,'message'=>'no user yet']);
 
