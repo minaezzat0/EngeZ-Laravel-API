@@ -75,4 +75,23 @@ class ApiContractController extends Controller
 
         return response()->json($contracts);
     }
+    public function mycontracts()
+    {
+        if (isset($_GET['access_token'])) {
+            $access_token = $_GET['access_token'];
+        } else
+            return response()->json(['status' => false, 'message' => 'you dont have prevliouse ']);
+        $token = Token::where('access_token', $access_token)->first();
+        $user = $token->user;
+        if ($user == null)
+            return response()->json(['status' => false, 'message' => 'you dont have prevliouseee']);
+        if ($user->role == 'users') {
+            $contracts = Contract::with('job', 'freelancer','user')->where('user_id', $user->id)->get();
+            return response()->json($contracts);
+        }
+        if ($user->role == 'freelancer') {
+            $contracts = Contract::with('freelancer','job', 'user')->where('freelancer_id', $user->id)->get();
+            return response()->json($contracts);
+        }
+    }
 }
