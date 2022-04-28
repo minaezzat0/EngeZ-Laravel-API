@@ -72,4 +72,10 @@ class ApiContactController extends Controller
 
 
     }
+    
+    public function owndelete($id)
+    {
+        $contact = Contact::find($id)->delete();
+        return response()->json(['status' => true, 'message' => 'YOur offer deleted successfully']);
+    }
 }
