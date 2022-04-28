@@ -45,7 +45,7 @@ class ApiJobController extends Controller
         $validator=\Validator::make($request->all(),
         [
             'title'=>'required|max:191|min:3',
-            'desc'=>'required|max:1000|min:5',
+            'desc'=>'required|max:300|min:5',
             'img'=>'nullable',
              'duration'=>'required',
              'balance'=>'required',
