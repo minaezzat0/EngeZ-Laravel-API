@@ -35,7 +35,7 @@ class ApiJobController extends Controller
         $job->save();
         $job=Job::with('offers')->find($id);
     
-        return response()->json(['status'=>true,'message'=>'successed','job'=>$job]);    
+        return response()->json($job);    
   }
 
   function store(Request $request)
