@@ -15,7 +15,7 @@ class ApiContactController extends Controller
         {
             return response()->json(['status'=>false,'message'=>'no contact found']);
         }
-        return response()->json(['status'=>true,'message'=>'success','contacts'=>$contacts]);
+        return response()->json($contacts);
     }
     public function store(Request $request){
        
