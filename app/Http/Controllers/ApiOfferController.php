@@ -122,4 +122,12 @@ class ApiOfferController extends Controller
 
 
     }
+     public function show($id){
+        $offer=Offer::with('job','user')->find($id);
+        if($offer==null)
+        return response()->json(['status'=>false,'message'=>'offer not found']);
+        return response()->json($offer);
+
+    }
+
 }
