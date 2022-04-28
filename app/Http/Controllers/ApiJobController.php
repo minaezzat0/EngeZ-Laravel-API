@@ -133,7 +133,7 @@ class ApiJobController extends Controller
                 
                 $job->update($data);
 
-                return response()->json(['status'=>true,'message'=>'job updated succed','job'=>$job]);
+                return response()->json($job);
                    
             
              }
