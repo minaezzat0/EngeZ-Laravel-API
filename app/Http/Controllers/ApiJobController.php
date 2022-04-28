@@ -194,7 +194,7 @@ class ApiJobController extends Controller
             $jobs=Job::with('offers')->orderBy('id','Desc')->take(5)->get();
             if($jobs==null)
             return response()->json(['status'=>false ,'message'=>'no user yet']);
-            return response()->json(['status'=>true ,'message'=>'successed','jobs'=>$jobs]);
+            return response()->json($jobs);
           }
         
           public function getjobsforuser($id)
