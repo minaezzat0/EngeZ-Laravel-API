@@ -16,7 +16,7 @@ class ApiJobController extends Controller
         if($jobs==null)
         return response()->json(['status'=>false ,'message'=>'no user yet']);
 
-        return response()->json(['status'=>true ,'message'=>'successed','jobs'=>$jobs]);
+        return response()->json($jobs);
    
     }
     function show($id)
