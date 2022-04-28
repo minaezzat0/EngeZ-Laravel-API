@@ -14,7 +14,7 @@ class ApiContractController extends Controller
     //
     public function index(){
         $contracts=Contract::with('job','user','freelancer')->get();
-        return response()->json(['status'=>true,'message'=>'contracted successfuly','contracts'=>$contracts]);
+        return response()->json($contracts);
     }
     public function store(Request $request){
         $data=$request->all();
