@@ -41,7 +41,7 @@ class ApiContractController extends Controller
       $job->status=1;
       $job->save();
       $contract=Contract::create($data);
-      return response()->json(['status'=>true,'message'=>'contracted successfuly','contract'=>$contract]);
+      return response()->json($contract);
 
 
         
