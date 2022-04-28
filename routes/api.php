@@ -29,6 +29,7 @@ use Illuminate\Support\Facades\Route;
           Route::get('contractsforuser/{id}','ApiContractController@contractforuser');
           Route::get('/jobuser/{id}','ApiJobController@getjobsforuser');
           Route::get('/contracts/{id}','ApiContractController@show');
+          Route::get('joboffers/{id}','ApiOfferController@offersByJobID');
 
    Route::middleware('is_api_admin')->group(function(){
          Route::get('/users','ApiUserController@index');
