@@ -24,6 +24,7 @@ use Illuminate\Support\Facades\Route;
           Route::delete('/contacts/{id}','ApiContactController@delete');
           Route::post('/contracts','ApiContractController@store');
       });
+          Route::get('/mycontracts','ApiContractController@mycontracts');
           Route::delete('/owncontacts/{id}', 'ApiContactController@owndelete');
           Route::get('contractsforuser/{id}','ApiContractController@contractforuser');
           Route::get('/jobuser/{id}','ApiJobController@getjobsforuser');
