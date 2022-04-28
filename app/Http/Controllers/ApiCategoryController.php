@@ -33,7 +33,7 @@ class ApiCategoryController extends Controller
 
 
          $category=Category::create(['name'=>$request->name]);
-         return response()->json(['status'=>true,'message'=>'category saved successfuly','category'=>$category]);
+         return response()->json($category);
      
     }
     public function edit($id,Request $request)
