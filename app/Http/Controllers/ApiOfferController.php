@@ -88,4 +88,11 @@ class ApiOfferController extends Controller
             return response()->json(['success']);
     
         }
+    public function offersByJobID($id)
+    {
+        $job = Job::find($id);
+        // $job = $job->id;
+        $offers = Offer::with('job')->where('job_id', $job->id)->get();
+        return response()->json($offers);
+    }
 }
