@@ -43,7 +43,7 @@ class ApiContactController extends Controller
          
           $contact=Contact::create($data);
 
-         return response()->json(['status'=>true,'message'=>'post stored succssed','contac'=>$contact]);
+         return response()->json($contact);
     
     }
 
