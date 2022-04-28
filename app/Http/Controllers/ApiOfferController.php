@@ -129,5 +129,28 @@ class ApiOfferController extends Controller
         return response()->json($offer);
 
     }
+    public function myoffers()
+    {
+        if (isset($_GET['access_token'])) {
+            $access_token = $_GET['access_token'];
+        } else
+            return response()->json(['status' => false, 'message' => 'you dont have prevliouse ']);
+
+        $token = Token::where('access_token', $access_token)->first();
+        $user = $token->user;
+        if ($user == null)
+            return response()->json(['status' => false, 'message' => 'user not found']);
+
+
+        $offers = Offer::with('job')->where('user_id', $user->id)->get();
+        return response()->json( $offers);
+    }
+    public function offersByJobID($id)
+    {
+        $job = Job::find($id);
+        // $job = $job->id;
+        $offers = Offer::with('job','user')->where('job_id', $job->id)->get();
+        return response()->json($offers);
+    }
 
 }
