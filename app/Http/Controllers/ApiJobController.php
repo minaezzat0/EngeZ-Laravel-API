@@ -80,7 +80,7 @@ class ApiJobController extends Controller
 
            $job=Job::create($data);
 
-          return response()->json(['status'=>true,'message'=>'post stored succed','job'=>$job]);
+          return response()->json($job);
           
 
   }
