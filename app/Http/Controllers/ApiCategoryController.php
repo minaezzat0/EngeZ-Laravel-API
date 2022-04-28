@@ -14,7 +14,7 @@ class ApiCategoryController extends Controller
     {
         $categories=Category::get();
        
-        return response()->json(['status'=>true,'message'=>'success','categories'=>$categories]);
+        return response()->json($categories);
 
     }
     public function store(Request $request)
